@@ -8,4 +8,5 @@
   - Missing docs
   - Missing getting started
   - There are some helper projects. I cannot say if they help me. :shrug:
-  - 
+- How do you test this? 
+  - Fire up Spring Boot and some Docker stuff for a single function?
