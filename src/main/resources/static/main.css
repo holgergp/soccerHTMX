@@ -18,6 +18,31 @@
 
 }
 
+.rank0 {
+    background-color: rgb(74 222 128);
+}
+
+.rank1, .rank2 {
+    background-color: rgb(220 252 231);
+}
+
+
+.rank3, .rank4, .rank5 {
+    background-color: rgb(34 211 238);
+}
+
+.rank6, .rank7, .rank8, .rank9, .rank10, .rank11, .rank12, .rank13, .rank14 {
+    background-color: rgb(252 231 243);
+}
+
+.rank15 {
+    background-color: rgb(254 202 202);
+}
+
+.rank16, .rank17 {
+    background-color: rgb(220 38 38);
+}
+
 .team {
     font-weight: 700;
     column-gap: 0.125rem;

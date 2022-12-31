@@ -1,14 +1,14 @@
 <div th:fragment="position(team)" th:id="|position-${team.id}|">
-    <div class="position">
-        <div class="team">
-            <div th:text="${teamStat.index + 1}"></div>
-            <div th:text="${team.name}">FC Wolfsburg</div>
-
-        </div>
-        <input type='hidden' name='team' th:value="${team.id}"/>
-
+    <div class="position" th:classappend="${'rank' + teamStat.index}">
+    <div class="team">
+        <div th:text="${teamStat.index + 1}"></div>
+        <div th:text="${team.name}">FC Wolfsburg</div>
 
     </div>
+    <input type='hidden' name='team' th:value="${team.id}"/>
+
+
+</div>
 </div>
 
 <div th:fragment="soccer-table" th:remove="tag">
