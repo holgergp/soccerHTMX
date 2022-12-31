@@ -1,0 +1,26 @@
+.app {
+    text-align: center;
+}
+
+.soccer-table {
+    display: grid;
+    place-items: center;
+    row-gap: 0.25rem;
+}
+
+.position {
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.375rem;
+    width: 320px;
+
+}
+
+.team {
+    font-weight: 700;
+    column-gap: 0.125rem;
+    grid-template-columns: 1fr 9fr 1fr;
+    display: grid;
+}

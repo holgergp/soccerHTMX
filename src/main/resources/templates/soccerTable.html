@@ -2,15 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
+<head>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+</head>
 <body>
+<div class="app">
+    <h1>Kickertabelle zum Selberstecken</h1>
+    <form id="soccer-table" class="soccer-table sortable" hx-post="/soccerTable" hx-trigger="end" hx-swap="innerHTML"
+          th:remove="all-but-first">
 
-
-<form id="soccer-table" class="soccer-table sortable" hx-post="/soccerTable" hx-trigger="end" hx-swap="innerHTML"
-      th:remove="all-but-first">
-
-    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
-    </div>
-</form>
+        <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+        </div>
+    </form>
+</div>
 </body>
 <script type="text/javascript" th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
 <script type="text/javascript" th:src="@{/webjars/sortablejs/1.8.3/Sortable.min.js}"></script>
