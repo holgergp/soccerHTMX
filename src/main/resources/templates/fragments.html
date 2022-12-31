@@ -1,13 +1,11 @@
-<span th:fragment="test-fragment"
-      id="test-fragment">
-    New element
-
-</span>
-
-<li th:fragment="position(team)" th:id="|position-${team.id}|">
+<div th:fragment="position(team)" th:id="|position-${team.id}|">
     <div class="view">
-
         <label th:text="${team.name}">FC Wolfsburg</label>
-
+        <input type='hidden' name='team' th:value="${team.id}"/>
     </div>
-</li>
+</div>
+
+<div th:fragment="soccer-table" th:remove="tag">
+    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+    </div>
+</div>

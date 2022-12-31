@@ -5,18 +5,20 @@ import io.github.wimdeblauwe.hsbt.mvc.HxRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
-class SoccerHtmxController {
+class SoccerHtmxController(val repository: SoccerHtmxRepository) {
     @GetMapping("/") // Only called on a full page refresh, not an htmx request
     fun indexRequest(model: Model): String? {
-        model.addAttribute("soccerTable", getInitialData())
+        model.addAttribute("soccerTable", repository.getInitialData())
         return "soccerTable"
     }
 
-    @GetMapping("/linkClicked")
+    @PostMapping("/soccerTable")
     @HxRequest
-    fun clickRequest(details: HtmxRequest?): String? {
-        return "fragments :: test-fragment"
+    fun soccerTable(formData: FormData, details: HtmxRequest?, model: Model): String? {
+        model.addAttribute("soccerTable", repository.getResortedList(formData))
+        return "fragments :: soccer-table"
     }
 }

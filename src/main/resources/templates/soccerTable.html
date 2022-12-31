@@ -3,17 +3,29 @@
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <body>
-<div hx-get="/linkClicked" hx-trigger="click" hx-swap="innerHTML show:top"
-     hx-target="#element-target">
-    [Click me]
-</div>
-<div id="element-target"/>
 
 
-<ul id="soccer-table" class="soccer-table" th:remove="all-but-first">
-    <li th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
-    </li>
-</ul>
+<form id="soccer-table" class="soccer-table sortable" hx-post="/soccerTable" hx-trigger="end" hx-swap="innerHTML"
+      th:remove="all-but-first">
+
+    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+    </div>
+</form>
 </body>
 <script type="text/javascript" th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/sortablejs/1.8.3/Sortable.min.js}"></script>
+<script>
+    htmx.onLoad(function (content) {
+        var sortables = content.querySelectorAll(".sortable");
+        for (var i = 0; i < sortables.length; i++) {
+            var sortable = sortables[i];
+            new Sortable(sortable, {
+                animation: 150,
+                ghostClass: 'blue-background-class'
+            });
+        }
+    })
+</script>
+
+
 </html>
