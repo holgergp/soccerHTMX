@@ -1,11 +1,11 @@
-package com.grosseplankermann.soocerHTMX
+package com.grosseplankermann.soccerHTMX
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SoocerHtmxApplication
+class SoccerHtmxApplication
 
 fun main(args: Array<String>) {
-    runApplication<SoocerHtmxApplication>(*args)
+    runApplication<SoccerHtmxApplication>(*args)
 }

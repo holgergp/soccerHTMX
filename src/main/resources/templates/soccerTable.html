@@ -1,3 +1,13 @@
-<html>
-<body>Hello</body>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<body>
+<div hx-get="/linkClicked" hx-trigger="click" hx-swap="innerHTML show:top"
+     hx-target="#element-target">
+    [Click me]
+</div>
+<div id="element-target"/>
+</body>
+<script type="text/javascript" th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
 </html>

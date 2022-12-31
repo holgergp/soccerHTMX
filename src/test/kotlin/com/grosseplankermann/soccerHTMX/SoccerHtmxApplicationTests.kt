@@ -1,10 +1,10 @@
-package com.grosseplankermann.soocerHTMX
+package com.grosseplankermann.soccerHTMX
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SoocerHtmxApplicationTests {
+class SoccerHtmxApplicationTests {
 
     @Test
     fun contextLoads() {
