@@ -33,10 +33,9 @@ class SoccerHtmxController(val repository: SoccerHtmxRepository) {
         return "fragments :: soccer-table"
     }
 
-    @PostMapping("/saveSingleTeam/{id}")
+    @PostMapping("/saveSingleTeam")
     @HxRequest
     fun saveSingleTeam(
-        @PathVariable id: String,
         formData: SaveSingleTeamFormData,
         details: HtmxRequest?,
         model: Model

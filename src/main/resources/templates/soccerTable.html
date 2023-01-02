@@ -8,7 +8,7 @@
 <body>
 <div class="app">
     <h1>Kickertabelle zum Selberstecken</h1>
-    <form id="edit-soccer-table" hx:post="|/saveSingleTeam/1|" hx-swap="innerHTML"></form>
+    <form id="edit-soccer-table" hx-post="/saveSingleTeam" hx-swap="innerHTML" hx-target="#soccer-table"></form>
 
     <form id="soccer-table" class="soccer-table sortable" hx-post="/soccerTable" hx-trigger="end" hx-swap="innerHTML"
           th:remove="all-but-first">
