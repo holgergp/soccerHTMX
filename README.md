@@ -35,6 +35,12 @@ If I have some time left
   - In JS Land everything already comes along with nice fonts.
 - Warnings in thymeleaf regarding HTMX templates.
   - I thought/hoped that this would be adressed by the plugin used. What do I miss here?
+- Swapping elements on the basis of IDs or UI structure in conjuction with Thymeleaf fragments seems a little brittle to me.
+  - I had some problems/bugs with that
+  - You have to have the UI-structure in mind when swapping elements. There seems to be very little support for references, it's just strings.
+  - See "I miss components"
+- Debugging layout fuckups, because sth got replaced somehow wrong is a little painful
+  - Look at the rendered output and guess what could have gone wrong.
 - I think HTMX does the job kinda, my criticism is mostly targeted towards the Spring-Boot integration.
   - There are many pieces missing that are a staple in the JS Ecosystem
   - If you are integrating HTMX with sth different, many of the above points could be solved
