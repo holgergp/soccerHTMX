@@ -40,8 +40,8 @@
 </div>
 
 <div th:fragment="editTeam" th:remove="tag">
-    <input name='teamName' th:value="${team.name}" form=""/>
-    <input type='hidden' name='team' th:value="${team.id}" form=""/>
+    <input name='teamName' th:value="${team.name}" form="edit-soccer-table"/>
+    <input type='hidden' name='teamId' th:value="${team.id}" form="edit-soccer-table"/>
 </div>
 
 <div th:fragment="showTeam" th:text="${team.name}">FC Wolfsburg</div>

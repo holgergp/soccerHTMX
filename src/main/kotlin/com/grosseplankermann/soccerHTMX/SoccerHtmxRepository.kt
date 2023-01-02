@@ -30,24 +30,38 @@ class SoccerHtmxRepository(var database: LeagueTable = getInitialData()) {
 
     fun getDatabaseContents() = database
 
-    fun getResortedList(formData: FormData): LeagueTable = LeagueTable(
-        formData.team.map { id ->
+    fun getResortedList(sortableFormData: SortableFormData): LeagueTable = LeagueTable(
+        sortableFormData.team.map { id ->
             toUITeam(teams.find { team -> team.id == id }!!)
         }
     )
 
-    fun storeResortedList(formData: FormData): LeagueTable = getResortedList(formData).also { database = it }
+    fun storeResortedList(sortableFormData: SortableFormData): LeagueTable =
+        getResortedList(sortableFormData).also { database = it }
 
     fun getTeamsInEditMode(teamId: String): LeagueTable = LeagueTable(
         getDatabaseContents().positions.map {
             if (teamId != it.id) {
                 it
             } else {
-                it.apply { editMode = !editMode }
+                UITeam(id = teamId, name = it.name, editMode = !it.editMode)
             }
         }
     )
 
     fun storeEditModedList(teamId: String): LeagueTable =
         getTeamsInEditMode(teamId).also { database = it }
+
+    fun getListWithAdaptedName(formData: SaveSingleTeamFormData): LeagueTable = LeagueTable(
+        getDatabaseContents().positions.map {
+            if (formData.teamId != it.id) {
+                it
+            } else {
+                UITeam(id = formData.teamId, name = formData.teamName, editMode = false)
+            }
+        }
+    )
+
+    fun storeListWithAdaptedName(saveSingleTeamFormData: SaveSingleTeamFormData): LeagueTable =
+        getListWithAdaptedName(saveSingleTeamFormData).also { database = it }
 }

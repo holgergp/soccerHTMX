@@ -18,8 +18,8 @@ class SoccerHtmxController(val repository: SoccerHtmxRepository) {
 
     @PostMapping("/soccerTable")
     @HxRequest
-    fun soccerTable(formData: FormData, details: HtmxRequest?, model: Model): String? {
-        val resortedList = repository.storeResortedList(formData)
+    fun soccerTable(sortableFormData: SortableFormData, details: HtmxRequest?, model: Model): String? {
+        val resortedList = repository.storeResortedList(sortableFormData)
         model.addAttribute("soccerTable", resortedList)
         return "fragments :: soccer-table"
     }
@@ -35,8 +35,15 @@ class SoccerHtmxController(val repository: SoccerHtmxRepository) {
 
     @PostMapping("/saveSingleTeam/{id}")
     @HxRequest
-    fun saveSingleTeam(@PathVariable id: String, formData: FormData, details: HtmxRequest?, model: Model): String? {
-        model.addAttribute("soccerTable", repository.getResortedList(formData))
+    fun saveSingleTeam(
+        @PathVariable id: String,
+        formData: SaveSingleTeamFormData,
+        details: HtmxRequest?,
+        model: Model
+    ): String? {
+        val listWithAdaptedName = repository.storeListWithAdaptedName(formData)
+
+        model.addAttribute("soccerTable", listWithAdaptedName)
         return "fragments :: soccer-table"
     }
 }
