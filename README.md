@@ -8,7 +8,6 @@ Enjoy it at `http://localhost:8080`
 
 If I have some time left
 - Add deployment
-- Add edit function
 - Add nicer styles
 - Maybe enhance element swapping (for now the whole list is swapped)
   - Manual react so to say
