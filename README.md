@@ -47,6 +47,12 @@ If I have some time left
     - Phoenix/Rails etc.
 - That being said: I could get sth done in a surprising short amount of time.
   - Given I start with Spring Boot from - not zero -
+- And tbh it's quite astonishing to me, how much you can achieve without a single line of JS.
+  - But that comes at a price:
+    - You still have to know what you are doing
+    - All the comfy JS-stuff for testing/debugging/turnaround is gone
+    - It's all reference by string, little linting/compiling
+    - You will stare at your markup a lot
 - Current verdict:
   - This might be sth if
     - You just want to build sth with very little client side logic.
