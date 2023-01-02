@@ -28,8 +28,6 @@ fun getInitialData(): LeagueTable = LeagueTable(teams.map { toUITeam(it) })
 @Repository
 class SoccerHtmxRepository(var database: LeagueTable = getInitialData()) {
 
-    val emptyTeam = Team("empty", "empty")
-
     fun getDatabaseContents() = database
 
     fun getResortedList(formData: FormData): LeagueTable = LeagueTable(
@@ -39,9 +37,6 @@ class SoccerHtmxRepository(var database: LeagueTable = getInitialData()) {
     )
 
     fun storeResortedList(formData: FormData): LeagueTable = getResortedList(formData).also { database = it }
-
-    fun getTeamInEditMode(teamId: String): UITeam =
-        toUITeam(teams.find { team -> team.id == teamId }!!).apply { editMode = true }
 
     fun getTeamsInEditMode(teamId: String): LeagueTable = LeagueTable(
         getDatabaseContents().positions.map {
