@@ -48,7 +48,7 @@ class SoccerHtmxRepository(var database: LeagueTable = getInitialData()) {
             if (teamId != it.id) {
                 it
             } else {
-                it.apply { editMode = true }
+                it.apply { editMode = !editMode }
             }
         }
     )
