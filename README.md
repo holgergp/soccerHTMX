@@ -34,6 +34,8 @@ If I have some time left
 - How do I go about with assets like fonts?
   - Simple one, I just don't know it.
   - In JS Land everything already comes along with nice fonts.
+- Warnings in thymeleaf regarding HTMX templates.
+  - I thought/hoped that this would be adressed by the plugin used. What do I miss here?
 - I think HTMX does the job kinda, my criticism is mostly targeted towards the Spring-Boot integration.
   - There are many pieces missing that are a staple in the JS Ecosystem
   - If you are integrating HTMX with sth different, many of the above points could be solved
