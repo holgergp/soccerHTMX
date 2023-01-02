@@ -1,17 +1,47 @@
 <div th:fragment="position(team)" th:id="|position-${team.id}|">
     <div class="position" th:classappend="${'rank' + teamStat.index}">
-    <div class="team">
-        <div th:text="${teamStat.index + 1}"></div>
-        <div th:text="${team.name}">FC Wolfsburg</div>
+        <div class="team">
+            <div th:text="${teamStat.index + 1}"></div>
+            <th:block th:if="${team.editMode == true}">
+                <div th:insert="fragments :: editTeam" th:remove="tag"/>
+            </th:block>
+            <th:block th:if="${team.editMode == false}">
+                <div th:insert="fragments :: showTeam" th:remove="tag"/>
+            </th:block>
+            <div class="editButton" hx:post="|/edit/${team.id}|" hx-swap="innerHTML" hx-target="#leagueTable">
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="editButton"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                >
+                    <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                </svg>
+            </div>
+
+        </div>
+        <input type='hidden' name='team' th:value="${team.id}"/>
+
 
     </div>
-    <input type='hidden' name='team' th:value="${team.id}"/>
-
-
-</div>
 </div>
 
 <div th:fragment="soccer-table" th:remove="tag">
-    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+    <div id="leagueTable">
+        <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+        </div>
     </div>
 </div>
+
+<div th:fragment="editTeam" th:remove="tag">
+    <input name='teamName' th:value="${team.name}" form=""/>
+    <input type='hidden' name='team' th:value="${team.id}" form=""/>
+</div>
+
+<div th:fragment="showTeam" th:text="${team.name}">FC Wolfsburg</div>
