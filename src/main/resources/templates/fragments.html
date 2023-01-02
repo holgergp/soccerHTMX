@@ -8,7 +8,7 @@
             <th:block th:if="${team.editMode == false}">
                 <div th:insert="fragments :: showTeam" th:remove="tag"/>
             </th:block>
-            <div class="editButton" hx:post="|/edit/${team.id}|" hx-swap="innerHTML" hx-target="#leagueTable">
+            <div class="editButton" hx:post="|/edit/${team.id}|" hx-swap="innerHTML" hx-target="#soccer-table">
                 <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="editButton"
@@ -33,10 +33,10 @@
 </div>
 
 <div th:fragment="soccer-table" th:remove="tag">
-    <div id="leagueTable">
-        <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
-        </div>
+
+    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
     </div>
+
 </div>
 
 <div th:fragment="editTeam" th:remove="tag">
