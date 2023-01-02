@@ -49,3 +49,20 @@
     grid-template-columns: 1fr 9fr 1fr;
     display: grid;
 }
+
+.editButton{
+    color: rgb(75 85 99);
+    opacity: 0;
+
+}
+
+.editButton:hover{
+    opacity: 1;
+}
+
+svg.editButton {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    vertical-align: middle;
+}

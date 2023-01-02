@@ -8,8 +8,7 @@ Enjoy it at `http://localhost:8080`
 
 If I have some time left
 - Add deployment
-- Add edit function
-- Add nicer styles
+- Add nicer styles and fonts
 - Maybe enhance element swapping (for now the whole list is swapped)
   - Manual react so to say
 
@@ -31,6 +30,11 @@ If I have some time left
 - I miss components
   - As a way to structure my ui code
   - Fragments are nice but just don't cut it.
+- How do I go about with assets like fonts?
+  - Simple one, I just don't know it.
+  - In JS Land everything already comes along with nice fonts.
+- Warnings in thymeleaf regarding HTMX templates.
+  - I thought/hoped that this would be adressed by the plugin used. What do I miss here?
 - I think HTMX does the job kinda, my criticism is mostly targeted towards the Spring-Boot integration.
   - There are many pieces missing that are a staple in the JS Ecosystem
   - If you are integrating HTMX with sth different, many of the above points could be solved
