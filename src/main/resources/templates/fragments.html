@@ -2,12 +2,8 @@
     <div class="position" th:classappend="${'rank' + teamStat.index}">
         <div class="team">
             <div th:text="${teamStat.index + 1}"></div>
-            <th:block th:if="${team.editMode == true}">
-                <div th:insert="fragments :: editTeam" th:remove="tag"/>
-            </th:block>
-            <th:block th:if="${team.editMode == false}">
-                <div th:insert="fragments :: showTeam" th:remove="tag"/>
-            </th:block>
+            <div th:if="${team.editMode}" th:insert="~{fragments :: editTeam}" th:remove="tag"/>
+            <div th:if="${not team.editMode}" th:insert="~{fragments :: showTeam}" th:remove="tag"/>
             <div class="editButton" hx:post="|/edit/${team.id}|" hx-swap="innerHTML" hx-target="#soccer-table">
                 <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +30,16 @@
 
 <div th:fragment="soccer-table" th:remove="tag">
 
-    <div th:insert="fragments :: position(${team})" th:each="team : ${soccerTable.positions}" th:remove="tag">
+    <div th:insert="~{fragments :: position(${team})}" th:each="team : ${soccerTable.positions}" th:remove="tag">
     </div>
 
 </div>
 
 <div th:fragment="editTeam" th:remove="tag">
-    <input name='teamName' th:value="${team.name}" form="edit-soccer-table"/>
-    <input type='hidden' name='teamId' th:value="${team.id}" form="edit-soccer-table"/>
+    <form id="edit-soccer-table" hx-post="/saveSingleTeam" hx-swap="innerHTML" hx-target="#soccer-table">
+        <input name='teamName' th:value="${team.name}"/>
+        <input type='hidden' name='teamId' th:value="${team.id}"/>
+    </form>
 </div>
 
 <div th:fragment="showTeam" th:text="${team.name}">FC Wolfsburg</div>
